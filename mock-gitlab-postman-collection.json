@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "b5d93e8c-8b4b-4d4c-9b2c-9f9b9c0b1b1b",
+		"name": "GitLab Mock API",
+		"description": "Collection for testing the GitLab Mock API endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "List Projects",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v4/projects?per_page=20",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v4",
+								"projects"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "20",
+									"description": "Number of items per page (1-100)"
+								}
+							]
+						},
+						"description": "Get a list of projects"
+					}
+				},
+				{
+					"name": "Get Project",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v4/projects/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v4",
+								"projects",
+								"1"
+							]
+						},
+						"description": "Get a specific project by ID"
+					}
+				},
+				{
+					"name": "List Project Commits",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v4/projects/1/repository/commits?per_page=20",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v4",
+								"projects",
+								"1",
+								"repository",
+								"commits"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "20",
+									"description": "Number of items per page (1-100)"
+								}
+							]
+						},
+						"description": "Get a list of repository commits in a project"
+					}
+				}
+			]
+		},
+		{
+			"name": "Merge Requests",
+			"item": [
+				{
+					"name": "List Merge Requests",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v4/projects/1/merge_requests?state=opened&target_branch=main&per_page=20",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v4",
+								"projects",
+								"1",
+								"merge_requests"
+							],
+							"query": [
+								{
+									"key": "state",
+									"value": "opened",
+									"description": "State of MR (opened, closed, merged, all)"
+								},
+								{
+									"key": "target_branch",
+									"value": "main",
+									"description": "Target branch"
+								},
+								{
+									"key": "per_page",
+									"value": "20",
+									"description": "Number of items per page (1-100)"
+								}
+							]
+						},
+						"description": "Get a list of merge requests in a project"
+					}
+				},
+				{
+					"name": "Get Merge Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v4/projects/1/merge_requests/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v4",
+								"projects",
+								"1",
+								"merge_requests",
+								"1"
+							]
+						},
+						"description": "Get a specific merge request by ID"
+					}
+				},
+				{
+					"name": "List Merge Request Commits",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v4/projects/1/merge_requests/1/commits",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v4",
+								"projects",
+								"1",
+								"merge_requests",
+								"1",
+								"commits"
+							]
+						},
+						"description": "Get a list of commits in a merge request"
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string",
+			"description": "Base URL of the GitLab Mock API"
+		}
+	]
+}
